@@ -6,11 +6,14 @@ class AiService {
 
   AiService({this.baseUrl = 'http://10.0.2.2:3000'});
 
-  Future<String> chat(String message) async {
+  Future<String> chat(String message, {String? persona}) async {
     final response = await http.post(
       Uri.parse('$baseUrl/api/chat'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({'message': message}),
+      body: jsonEncode({
+        'message': message,
+        if (persona != null) 'persona': persona,
+      }),
     );
 
     if (response.statusCode != 200) {
@@ -18,6 +21,7 @@ class AiService {
     }
 
     final data = jsonDecode(response.body);
+    print('RESPONSE: ${response.body}');
     return data['message']['content'] as String;
   }
 }

@@ -38,7 +38,7 @@ class _LoadingDotsState extends State<LoadingDots>
         final delay = i / widget.count;
         return AnimatedBuilder(
           animation: _controller,
-          builder: (_, __) {
+          builder: (_, _) {
             final t = ((_controller.value - delay) % 1.0);
             final offset = t < 0.5 ? -8 * (t * 2) : -8 * (1 - (t - 0.5) * 2);
             return Padding(

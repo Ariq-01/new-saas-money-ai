@@ -17,15 +17,25 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
     try {
       final aiResponse = await _ai.chat(event.text);
-      emit(state.copyWith(
-        messages: [...state.messages, ChatMessage(userText: event.text, aiText: aiResponse)],
-        clearPending: true,
-      ));
+      emit(
+        state.copyWith(
+          messages: [
+            ...state.messages,
+            ChatMessage(userText: event.text, aiText: aiResponse),
+          ],
+          clearPending: true,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(
-        messages: [...state.messages, ChatMessage(userText: event.text, aiText: 'Error: $e')],
-        clearPending: true,
-      ));
+      emit(
+        state.copyWith(
+          messages: [
+            ...state.messages,
+            ChatMessage(userText: event.text, aiText: 'Error: $e'),
+          ],
+          clearPending: true,
+        ),
+      );
     }
   }
 }

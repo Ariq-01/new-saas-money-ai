@@ -4,11 +4,13 @@ import 'loading_indicator.dart';
 class ChatField extends StatelessWidget {
   final String textUser;
   final bool isLoading;
+  final bool autoide;
 
   const ChatField({
     super.key,
     required this.textUser,
     this.isLoading = false,
+    this.autoide = false,
   });
 
   @override
@@ -30,10 +32,7 @@ class ChatField extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                LoadingDots(
-                  color: Colors.deepPurple,
-                  dotSize: 6,
-                ),
+                LoadingDots(color: Colors.deepPurple, dotSize: 6),
                 const SizedBox(width: 6),
                 Text(
                   '⚡ Analysing..',

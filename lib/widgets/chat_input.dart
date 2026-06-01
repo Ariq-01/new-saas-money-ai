@@ -8,19 +8,29 @@ class ChatInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final buttonQuery = MediaQuery.of(context);
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.fromLTRB(
+        12,
+        12,
+        12,
+        buttonQuery.viewInsets.bottom + 25,
+      ),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               controller: controller,
+              maxLines: 3,
               decoration: InputDecoration(
                 hintText: 'Ask something...',
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
               ),
               onSubmitted: (_) => onSend(),
             ),
