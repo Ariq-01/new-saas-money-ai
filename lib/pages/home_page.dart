@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/chat/chat_bloc.dart';
 import '../widgets/chat_loading/chat_field.dart';
 import '../widgets/respons_ai.dart';
-import '../widgets/chat_input.dart';
-import '../widgets/features/calories/calories_section.dart';
+import '../widgets/chat_input_bar.dart';
+import '../widgets/features/calories/box_health.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/home_header/home_header.dart';
 
@@ -98,7 +98,10 @@ class _HomeViewState extends State<_HomeView> {
                     const CaloriesSection(),
                     const SizedBox(height: 16),
                     for (final msg in state.messages) ...[
-                      ResponsAI(text: msg.aiText),
+                      if (msg.nutritionData != null)
+                        BoxHealth(data: msg.nutritionData!)
+                      else
+                        ResponsAI(text: msg.aiText ?? ''),
                       const SizedBox(height: 16),
                     ],
 
@@ -115,7 +118,7 @@ class _HomeViewState extends State<_HomeView> {
                 ),
               ),
             ),
-            ChatInput(controller: _controller, onSend: _send),
+            ChatInputBar(controller: _controller, onSend: _send),
           ],
         ),
       ),

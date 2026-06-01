@@ -1,0 +1,3 @@
+NSCameraUsageDescription = "Used to take food photos";
+NSPhotoLibraryUsageDescription = "Used to select photos from gallery";
+NSPhotoLibraryAddUsageDescription = "Used to save photos to gallery";

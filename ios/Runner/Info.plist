@@ -68,5 +68,16 @@
 		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>id</string>
+		</array>
+		<key>NSCameraUsageDescription</key>
+		<string>Camera access required</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Photo library access required</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>Photo library access required</string>
 	</dict>
 </plist>
